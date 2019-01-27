@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import os
+
+if os.path.exists("/tmp/hello"):
+  status=0
+  statustxt="hello file present"
+else:
+  status=2
+  statustxt="hello file missing"
+
+print("%s FileCheck_hello - %s" % (status, statustxt))

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ -f /tmp/hello ]]; then
+  status=0
+  statustxt="hello file exists"
+else
+  status=2
+  statustxt="hello file missing"
+fi
+
+echo "$status FileCheck_hello - $statustxt"
