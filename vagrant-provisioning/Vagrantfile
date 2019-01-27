@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+Vagrant.configure(2) do |config|
+
+  NodeCount = 2
+
+  (1..NodeCount).each do |i|
+    config.vm.define "ubuntuvm0#{i}" do |node|
+      node.vm.box = "ubuntu/bionic64"
+      node.vm.hostname = "ubuntuvm0#{i}.example.com"
+      node.vm.network "private_network", ip: "172.42.42.21#{i}"
+      node.vm.provider "virtualbox" do |v|
+        v.name = "ubuntuvm0#{i}"
+        v.memory = 2048
+        v.cpus = 1
+      end
+    end
+  end
+
+  (1..NodeCount).each do |i|
+    config.vm.define "centosvm0#{i}" do |node|
+      node.vm.box = "centos/7"
+      node.vm.hostname = "centosvm0#{i}.example.com"
+      node.vm.network "private_network", ip: "172.42.42.22#{i}"
+      node.vm.provider "virtualbox" do |v|
+        v.name = "ubuntuvm0#{i}"
+        v.memory = 2048
+        v.cpus = 1
+      end
+    end
+  end
+
+end
