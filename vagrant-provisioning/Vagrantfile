@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
       node.vm.hostname = "centosvm0#{i}.example.com"
       node.vm.network "private_network", ip: "172.42.42.22#{i}"
       node.vm.provider "virtualbox" do |v|
-        v.name = "ubuntuvm0#{i}"
+        v.name = "centosvm0#{i}"
         v.memory = 2048
         v.cpus = 1
       end
