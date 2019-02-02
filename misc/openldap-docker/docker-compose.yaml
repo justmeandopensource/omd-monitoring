@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+
+  openldap:
+    image: osixia/openldap:1.2.3
+    container_name: openldap
+    ports:
+      - "389:389"
+    environment:
+      - LDAP_ORGANISATION="Just Me and Opensource"
+      - LDAP_DOMAIN=example.com
+      - LDAP_ADMIN_PASSWORD=admin
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.7.2
+    container_name: phpldapadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=openldap
+      - PHPLDAPADMIN_HTTPS=false

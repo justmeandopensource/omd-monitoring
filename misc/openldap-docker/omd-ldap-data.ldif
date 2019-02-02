@@ -1,0 +1,70 @@
+
+##############
+# Create OUs #
+##############
+
+dn: ou=groups,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: groups
+
+dn: ou=users,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: users
+
+########################
+# Create various Users #
+########################
+
+dn: cn=bobama,ou=users,dc=example,dc=com
+cn: bobama
+displayname: Barack Obama
+givenname: Barack Obama
+mail: bobama@example.com
+objectclass: inetOrgPerson
+objectclass: top
+sn: bobama
+uid: bobama
+userpassword: {MD5}YEeXN1hyT3hDFaeEGkbI+w==
+
+dn: cn=dtrump,ou=users,dc=example,dc=com
+cn: dtrump
+displayname: Donald Trump
+givenname: Donald Trump
+mail: dtrump@example.com
+objectclass: inetOrgPerson
+objectclass: top
+sn: dtrump
+uid: dtrump
+userpassword: {MD5}EHueIqMxRi5sdDHjzCbjZw==
+
+dn: cn=gbush,ou=users,dc=example,dc=com
+cn: gbush
+displayname: George Bush
+givenname: Geoge Bush
+mail: gbush@example.com
+objectclass: inetOrgPerson
+objectclass: top
+sn: gbush
+uid: gbush
+userpassword: {MD5}eAukcdgGXw+tXnnier/wZQ==
+
+#########################
+# Create various groups #
+#########################
+
+dn: cn=dev,ou=groups,dc=example,dc=com
+cn: dev
+member: cn=gbush,ou=users,dc=example,dc=com
+member: cn=dtrump,ou=users,dc=example,dc=com
+objectclass: groupOfNames
+objectclass: top
+
+dn: cn=sysadmins,ou=groups,dc=example,dc=com
+cn: sysadmins
+member: cn=bobama,ou=users,dc=example,dc=com
+objectclass: groupOfNames
+objectclass: top
+
+
